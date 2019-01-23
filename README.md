@@ -3,6 +3,7 @@
 This is a client-side library to interact with [Scalar DL](https://github.com/scalar-labs/scalardl) network.
 
 ## Docs
+* [Getting started with Scalar DL Sandbox](docs/dl-sandbox.md)
 * [Getting started](docs/getting-started.md)
 * Design document of Scalar DL (coming soon)
 * [Javadoc](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/)
