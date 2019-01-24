@@ -61,4 +61,4 @@ scalar.ledger.client.authorization.credential=Bearer <your-token>
 
 * [Getting Started with Scalar DL](dl-getting-started.md)
 * Design Document (coming soon)
-* [Javadoc for client SDK]()
+* [Javadoc for client SDK](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client/)
