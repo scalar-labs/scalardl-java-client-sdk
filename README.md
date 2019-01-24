@@ -4,9 +4,11 @@ This is a client-side library to interact with [Scalar DL](https://github.com/sc
 
 ## Docs
 * [Getting started with Scalar DL Sandbox](docs/dl-sandbox.md)
-* [Getting started](docs/getting-started.md)
+* [Getting started with Scalar DL](docs/dl-getting-started.md)
 * Design document of Scalar DL (coming soon)
-* [Javadoc](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/)
+* Javadocs
+** [Client SDK](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client)
+** [Ledger (for writing contract)](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/ledger)
 * Sample applications by contributors/collaborators (coming soon)
 
 ## Contributing 
