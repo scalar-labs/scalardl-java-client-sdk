@@ -14,7 +14,7 @@ From here, it assumes that you have a [GitHub](https://github.com/) account.
 If you don't, please create your account.
 
 We will authorize you through GitHub OAuth to give you an access to the Sandbox environment.
-Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [terms of use](https://scalar-labs.com/term-of-use), and press the button to do it.
+Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [terms of use](https://scalar-labs.com/terms-of-use), and press the button to do it.
 We will give you an access token and a key pair.
 The access token is used for communicating with Sandbox API gateway to authenticate you.
 The key pair is used for communicating with Scalar DL network.
