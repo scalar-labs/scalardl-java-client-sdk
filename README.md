@@ -8,7 +8,7 @@ This is a client-side library to interact with [Scalar DL](https://github.com/sc
 * Design document of Scalar DL (coming soon)
 * Javadocs
     * [Client SDK](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client)
-    * [Ledger (for writing contract)](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/ledger)
+    * Ledger (for writing contract) (coming soon)
 * Sample applications by contributors/collaborators (coming soon)
 
 ## Contributing 
