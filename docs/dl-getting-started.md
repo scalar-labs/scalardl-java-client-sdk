@@ -140,4 +140,4 @@ For more information, please take a look at [Javadoc]().
 ## References
 
 * Design Document (coming soon)
-* [Javadoc for client SDK]()
+* [Javadoc for client SDK](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client/)
