@@ -14,7 +14,7 @@ This is a client-side library to interact with [Scalar DL](https://github.com/sc
 ## Contributing 
 This library is mainly maintained by the Scalar Engineering Team, but of course we appreciate any help.
 
-* For asking questions, finding answers and helping other users, please go to [scalardl-user (English only)](https://groups.google.com/forum/#!forum/scalardl-user) or [scalardl-user-ja (Japanese only)](https://groups.google.com/forum/#!forum/scalardl-user-ja).
+* For asking questions, finding answers and helping other users, please go to [scalardl-user](https://groups.google.com/forum/#!forum/scalardl-user).
 * For filing bugs, suggesting improvements, or requesting new features, help us out by opening an issue.
 
 ## License
