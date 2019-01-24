@@ -14,7 +14,7 @@ From here, it assumes that you have a [GitHub](https://github.com/) account.
 If you don't, please create your account.
 
 We will authorize you through GitHub OAuth to give you an access to the Sandbox environment.
-Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [term of use](https://scalar-labs.com/term-of-use), and press the button to do it.
+Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [terms of use](https://scalar-labs.com/term-of-use), and press the button to do it.
 We will give you an access token and a key pair.
 The access token is used for communicating with Sandbox API gateway to authenticate you.
 The key pair is used for communicating with Scalar DL network.
@@ -22,6 +22,12 @@ The key pair is used for communicating with Scalar DL network.
 Please note that we give you a generated key pair for ease of use in the Sandbox, but it is usually required to create your private key in your own environment.
 
 ## Before running your first contract 
+
+Let's clone Scalar DL client SDK to interact with Scalar DL network.
+```
+$ git clone https://github.com/scalar-labs/scalardl-client-sdk.git 
+```
+You can put your downloaded zip in the directory and unzip it.
 
 Scalar DL manages data as a set of assets, where each asset is composed of a history of data identified by a key called `asset_id` and historical version number called `age`.
 `asset_id` is an arbitrary, but unique, string specified by users to manage their assets. However, the Sandbox is a shared environment that anyone can access,
