@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(dir: 'client', include: '*.jar')
+    compile fileTree(dir: 'client/lib', include: '*.jar')
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
