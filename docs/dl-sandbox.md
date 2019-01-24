@@ -30,7 +30,9 @@ One recommended way to do this is to append your token to your asset name as in 
 
 ## Run your first contract
 
-First, you need to update/configure the following properties in addition to the required properites to interact with Sandbox.
+First, you need to configure some properties to interact with Sandbox.
+It is recommended to use the properties file which can be downloaded from the site.
+If you want to configure by yourself, pleae update the following properties in addition to the required properites to interact with Sandbox.
 Then you are ready to follow [the doc](ledger-getting-started.md) to run your first contract.
 (Again, please note that you need to choose non-conflicting asset ids to properly use the Sandbox.)
 
