@@ -33,7 +33,7 @@ Scalar DL manages data as a set of assets, where each asset is composed of a his
 **Note.** The Sandbox is a shared environment that anyone can access,
 so please be careful about choosing an appropriate name for your `asset_id`s so that it will not conflict with `asset_id`s chosen by other users. One recommended way to do this is to prepend your username to your asset name as in `<username>_your-asset-name`.
 
-## Run your first contract
+## Configuration
 
 First, you will need to configure some properties to interact with Sandbox. It is recommended to use the [client.properties](https://github.com/scalar-labs/scalardl-client-sdk/blob/master/conf/client.properties) file contained in the repository. If you want to configure by yourself, please update the following properties in addition to the required properties to interact with Sandbox.
 

@@ -121,15 +121,15 @@ The tools we have used above are useful for simple testing purposes, but should 
 The following is a code snippet showing how to use `ClientService` to execute a contract.
 
 ```java
-  Injector injector =
+Injector injector =
   Guice.createInjector(new ClientModule(new ClientConfig(new File(properties))));
 
-  try (ClientService service = injector.getInstance(ClientService.class)) {
-    JsonObject jsonArgument = Json.createReader(new StringReader(contractArgument)).readObject();
-    ContractExecutionResponse response = service.executeContract(contractId, jsonArgument);
-    System.out.println("status: " + response.getStatus());
-    System.out.println("result: " + response.getResult());
-  }
+try (ClientService service = injector.getInstance(ClientService.class)) {
+  JsonObject jsonArgument = Json.createReader(new StringReader(contractArgument)).readObject();
+  ContractExecutionResponse response = service.executeContract(contractId, jsonArgument);
+  System.out.println("status: " + response.getStatus());
+  System.out.println("result: " + response.getResult());
+}
 ```
 
 It's pretty self-explanatory. It creates a `ClientService` instance using the dependency injection framework called `Guice`,
