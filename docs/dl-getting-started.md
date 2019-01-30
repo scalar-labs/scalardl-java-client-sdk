@@ -132,7 +132,7 @@ try (ClientService service = injector.getInstance(ClientService.class)) {
 }
 ```
 
-It's pretty self-explanatory. It creates a `ClientService` instance using the dependency injection framework called `Guice`,
+The above creates a `ClientService` instance using the dependency injection framework called `Guice`,
 and creates some json argument with `javax.json.JsonObject`.
 Then, you are ready to execute a contract as shown.
 For more information, please take a look at [Javadoc](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client/).
