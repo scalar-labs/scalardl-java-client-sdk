@@ -40,7 +40,7 @@ Also, the same care is needed when choosing contract IDs and we recommend using 
 ## Register your certificate
 
 Next, let's register your certificate in the Scalar DL network.
-The registered certificate will allow you to register and execute contracts, and it is used for tamper detection of the data stored in the network.
+The registered certificate will allow you to register and execute contracts, and also used for tamper detection of the data stored in the network.
 
 In the `scalardl-client-sdk` directory:
 ```
