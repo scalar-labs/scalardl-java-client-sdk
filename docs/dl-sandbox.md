@@ -15,7 +15,7 @@ If you don't, please create your account.
 
 We will authorize you through GitHub OAuth to give you an access to the Sandbox environment.
 Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [terms of use](https://scalar-labs.com/terms-of-use), and press the button to do it.
-We will give you an access token and a key pair.
+We will give you a zip file containing an access token, a key pair and configuration file.
 The access token is used for communicating with Sandbox API gateway to authenticate you.
 The key pair is used for communicating with Scalar DL network.
 
@@ -40,8 +40,8 @@ Also, the same care is needed in choosing contract IDs. So, we recommend using `
 ## Run your first contract
 
 First, you need to configure some properties to interact with Sandbox.
-Please use the properties file which can be downloaded from the site.
-Then you are ready to follow [the doc](dl-getting-started.md) to run your first contract.
+Please put the downloaded zip file in the `scalardl-client-sdk` directory and unzip it.
+Then you are ready to follow [the doc](dl-getting-started.md#register-the-certificate) to run your first contract.
 (Again, please note that you need to choose non-conflicting asset ids and contract ids to properly use the Sandbox.)
 
 ## References
