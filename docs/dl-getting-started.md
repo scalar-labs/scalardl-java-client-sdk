@@ -118,7 +118,7 @@ In Scalar DL 1.0, `asset_id` is not a reserved json key name and you can use any
 ## Interact with ClientService 
 
 The tools we have used above are useful for testing purposes, but should not be used for production applications. The Client SDK provides a service layer called `ClientService` which should be used for production applications.
-The following is a code snippet showing how to use `ClientService` to execute a contract.
+The following code snippet shows how to use `ClientService` to execute a contract.
 
 ```java
 Injector injector =
