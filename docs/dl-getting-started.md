@@ -20,7 +20,7 @@ The first thing you will need to do is to configure some properties.
 The following sample properties are the minimum required to interact with the Scalar DL network.
 Please update the values depending on your environment.
 ```
-[conf/client.properties]
+[client.properties]
 # A host name of Scalar DL network server.
 scalar.ledger.client.server_host=localhost
 
@@ -42,7 +42,7 @@ The registered certificate will allow you to register and execute contracts, and
 This time, let's use a simple tool to register your certificate as follows.
 
 ```
-$ client/bin/register-cert -properties conf/client.properties
+$ client/bin/register-cert -properties client.properties
 ```
 
 ## Create a contract
@@ -94,7 +94,7 @@ This will generate `build/classes/java/main/com/org1/contract/StateUpdater.class
 Let's register your contract. Here again we use a simple tool.
 
 ```
-$ client/bin/register-contract -properties conf/client.properties -contract-id StateUpdater -contract-binary-name com.org1.contract.StateUpdater -contract-class-file build/classes/java/main/com/org1/contract/StateUpdater.class
+$ client/bin/register-contract -properties client.properties -contract-id StateUpdater -contract-binary-name com.org1.contract.StateUpdater -contract-class-file build/classes/java/main/com/org1/contract/StateUpdater.class
 ```
 
 Please set a globally unique ID for the contract ID (e.g. `StateUpdater` in the above command).
@@ -107,7 +107,7 @@ In the application, anyone can vote with the same voting logic, and hence can us
 Now you are ready to execute the contract with the following command.
 
 ```
-$ client/bin/execute-contract -properties conf/client.properties -contract-id StateUpdater -contract-argument '{"asset_id":"some_asset", "state":3}'
+$ client/bin/execute-contract -properties client.properties -contract-id StateUpdater -contract-argument '{"asset_id":"some_asset", "state":3}'
 ```
 
 In the contract argument, the value specified with the key `asset_id` must be unique globally for each asset.
@@ -122,7 +122,7 @@ The following is a code snippet showing how to use `ClientService` to execute a 
 
 ```java
   Injector injector =
-  Guice.createInjector(new ClientModule(new ClientConfig(new File(properties))));
+  Guice.createInjector(new ClientModule(new Clientig(new File(properties))));
 
   try (ClientService service = injector.getInstance(ClientService.class)) {
     JsonObject jsonArgument = Json.createReader(new StringReader(contractArgument)).readObject();
