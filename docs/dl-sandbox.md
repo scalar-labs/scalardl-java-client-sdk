@@ -15,7 +15,7 @@ If you don't have one, please create a free account.
 
 We will authorize you through GitHub OAuth to grant you access to the Sandbox environment.
 Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [terms of use](https://scalar-labs.com/terms-of-use), and press the button `Try Now`.
-We will provide you a zip file containing the necessary access token, key pair and configuration file.
+We will provide you with a zip file containing the necessary access token, key pair and configuration file.
 The access token is only used for autehnication with Sandbox API gateway.
 The key pair is used for communicating with Scalar DL network.
 
