@@ -33,7 +33,7 @@ Scalar DL manages data as a set of assets, where each asset is composed of a his
 `asset_id` is an arbitrary, but unique, string specified by users to manage their assets.
 
 Since the Sandbox is a shared environment that anyone can access,
-take speical care when choosing an appropriate name so that it will not conflict with the `asset_id` chosen by another user.
+take special care when choosing appropriate names for your `asset_id`s so that they will not conflict with the `asset_id`s chosen by other user.
 One recommended way to do this is to append your username to the asset name, for example `<username>-<your-asset-name>`.
 Also, the same care is needed when choosing contract IDs and we recommend using `<username>-<your-contract-class-name>`.
 
