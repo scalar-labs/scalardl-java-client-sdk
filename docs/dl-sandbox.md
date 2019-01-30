@@ -73,6 +73,7 @@ In the `scalardl-client-sdk` directory:
     NOTE: Please replace `<username>` with your GitHub username.
     ```
     $ client/bin/execute-contract -properties client.properties -contract-id <username>-StateUpdater -contract-argument '{"asset_id": "<username>-myasset", "state": 3}'
+    ```
   
 ## What's next
 
