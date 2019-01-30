@@ -34,15 +34,50 @@ Scalar DL manages data as a set of assets, where each asset is composed of a his
 
 However, the Sandbox is a shared environment that anyone can access,
 so please be careful about choosing an appropriate name so that it will not conflict with `asset_id`s chosen by other users.
-One recommended way to do this is to append your username to your asset name as in `<username>_<your-asset-name>`.
+One recommended way to do this is to append your username to your asset name as in `<username>-<your-asset-name>`.
 Also, the same care is needed in choosing contract IDs. So, we recommend using `<username>-<your-contract-class-name>`.
 
-## Run your first contract
+## Register your certificate
 
-First, you need to configure some properties to interact with Sandbox.
-Please put the downloaded zip file in the `scalardl-client-sdk` directory and unzip it.
-Then you are ready to follow [the doc](dl-getting-started.md#register-the-certificate) to run your first contract.
-(Again, please note that you need to choose non-conflicting asset ids and contract ids to properly use the Sandbox.)
+Next, let's register your certificate in the Scalar DL network.
+The registered certificate will allow you to register and execute contracts, and will also be used for tamper detection of the data stored in the network.
+
+This time, let's use a simple tool to register your certificate as follows.
+
+```
+$ client/bin/register-cert -properties client.properties
+```
+
+## Run the StateUpdater contract
+
+We will run the contract [`scr/main/java/com/org1/contract/StateUpdater.java`](https://github.com/scalar-labs/scalardl-client-sdk/blob/master/src/main/java/com/org1/contract/StateUpdater.java), which manages status of some asset.
+
+In the `scalardl-client-sdk` directory:
+
+1. Compile the contract
+
+    ```
+    $ ./gradlew assemble
+    ```
+
+    This will generate `build/classes/java/main/com/org1/contract/StateUpdater.class`.
+
+2. Register the contract
+
+    Please replace `<username>` with your GitHub username.
+
+    ```
+    $ client/bin/register-contract -properties client.properties -contract-id <username>-StateUpdater -contract-binary-name com.org1.contract.StateUpdater -contract-class-file build/classes/java/main/com/org1/contract/StateUpdater.class
+    ```
+
+3. Execute the contract
+
+    ```
+    $ client/bin/execute-contract -properties client.properties -contract-id <username>-StateUpdater -contract-argument '{"asset_id": "<username>-myasset", "state": 3}'
+  
+## What's next
+
+Please take a look at [Getting Started with Scalar DL](dl-getting-started.md) to know a little more about what is going on. 
 
 ## References
 
