@@ -46,7 +46,7 @@ In the `scalardl-client-sdk` directory:
 ```
 $ client/bin/register-cert -properties client.properties
 ```
-* The `client.properties` should be the same file from the zip downloaded earlyer.
+* The `client.properties` should be the same file from the zip downloaded earlier.
 
 ## Run the StateUpdater contract
 
