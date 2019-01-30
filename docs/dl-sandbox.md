@@ -42,8 +42,6 @@ Also, the same care is needed in choosing contract IDs. So, we recommend using `
 Next, let's register your certificate in the Scalar DL network.
 The registered certificate will allow you to register and execute contracts, and will also be used for tamper detection of the data stored in the network.
 
-This time, let's use a simple tool to register your certificate as follows.
-
 ```
 $ client/bin/register-cert -properties client.properties
 ```
@@ -64,7 +62,7 @@ In the `scalardl-client-sdk` directory:
 
 2. Register the contract
 
-    Please replace `<username>` with your GitHub username.
+    NOTE: Please replace `<username>` with your GitHub username.
 
     ```
     $ client/bin/register-contract -properties client.properties -contract-id <username>-StateUpdater -contract-binary-name com.org1.contract.StateUpdater -contract-class-file build/classes/java/main/com/org1/contract/StateUpdater.class
@@ -72,6 +70,7 @@ In the `scalardl-client-sdk` directory:
 
 3. Execute the contract
 
+    NOTE: Please replace `<username>` with your GitHub username.
     ```
     $ client/bin/execute-contract -properties client.properties -contract-id <username>-StateUpdater -contract-argument '{"asset_id": "<username>-myasset", "state": 3}'
   
