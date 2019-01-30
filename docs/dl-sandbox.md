@@ -30,9 +30,12 @@ $ git clone https://github.com/scalar-labs/scalardl-client-sdk.git
 You can put your downloaded zip in the directory and unzip it.
 
 Scalar DL manages data as a set of assets, where each asset is composed of a history of data identified by a key called `asset_id` and historical version number called `age`.
-`asset_id` is an arbitrary, but unique, string specified by users to manage their assets. However, the Sandbox is a shared environment that anyone can access,
+`asset_id` is an arbitrary, but unique, string specified by users to manage their assets.
+
+However, the Sandbox is a shared environment that anyone can access,
 so please be careful about choosing an appropriate name so that it will not conflict with `asset_id`s chosen by other users.
-One recommended way to do this is to append your username to your asset name as in `<username>_your-asset-name`.
+One recommended way to do this is to append your username to your asset name as in `<username>_<your-asset-name>`.
+Also, the same care is needed in choosing contract IDs. So, we recommend using `<username>-<your-contract-class-name>`.
 
 ## Run your first contract
 
