@@ -4,22 +4,22 @@ This document explains how to get started with Scalar DL Sandbox.
 
 ## Purpose of Sandbox
 
-Sandbox is for playing around with Scalar DL to roughly understand what Scalar DL does and how to write contracts.
-This is not for verifying or benchmarking its reliability, scalability and/or performance.
+The Sandbox environment is for playing around with Scalar DL to roughly understand what Scalar DL does and how to write contracts.
+This is not for verifying or benchmarking the reliability, scalability and/or performance of Scalar DL.
 If you want to interact with Scalar DL more deeply, please [contact us](https://scalar-labs.com/contact_us/).
 
 ## Get an auth token and a key pair (a certificate and a private key)
 
-From here, it assumes that you have a [GitHub](https://github.com/) account.
-If you don't, please create your account.
+From here, you will need a [GitHub](https://github.com/) account.
+If you don't have one, please create a free account.
 
-We will authorize you through GitHub OAuth to give you an access to the Sandbox environment.
-Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [terms of use](https://scalar-labs.com/terms-of-use), and press the button to do it.
-We will give you an access token and a key pair.
-The access token is used for communicating with Sandbox API gateway to authenticate you.
+We will authorize you through GitHub OAuth to grant you access to the Sandbox environment.
+Please visit [our sandbox site](https://scalar-labs.com/sandbox/), read the [terms of use](https://scalar-labs.com/terms-of-use), and press the button `Try Now`.
+We will provide you with a zip file containing the necessary access token, key pair and configuration file.
+The access token is only used for authentication with Sandbox API gateway.
 The key pair is used for communicating with Scalar DL network.
 
-Please note that we give you a generated key pair for ease of use in the Sandbox, but it is usually required to create your private key in your own environment.
+Please note that we generate a key pair for ease of use for the Sandbox environment, but it is usually required to create your private key in your own environment.
 
 ## Before running your first contract 
 
@@ -27,35 +27,59 @@ Let's clone Scalar DL client SDK to interact with Scalar DL network.
 ```
 $ git clone https://github.com/scalar-labs/scalardl-client-sdk.git 
 ```
-You can put your downloaded zip in the directory and unzip it.
+Unzip the downloaded zip file into this directory.
 
 Scalar DL manages data as a set of assets, where each asset is composed of a history of data identified by a key called `asset_id` and historical version number called `age`.
-`asset_id` is an arbitrary, but unique, string specified by users to manage their assets. However, the Sandbox is a shared environment that anyone can access,
-so please be careful about choosing an appropriate name so that it will not conflict with `asset_id`s chosen by other users.
-One recommended way to do this is to append your username to your asset name as in `<username>_your-asset-name`.
+`asset_id` is an arbitrary, but unique, string specified by users to manage their assets.
 
-## Run your first contract
+Since the Sandbox is a shared environment that anyone can access,
+take special care when choosing appropriate names for your `asset_id`s so that they will not conflict with the `asset_id`s chosen by other user.
+One recommended way to do this is to append your username to the asset name, for example `<username>-<your-asset-name>`.
+Also, the same care is needed when choosing contract IDs and we recommend using `<username>-<your-contract-class-name>`.
 
-First, you need to configure some properties to interact with Sandbox.
-It is recommended to use the properties file which can be downloaded from the site.
-If you want to configure by yourself, pleae update the following properties in addition to the required properites to interact with Sandbox.
-Then you are ready to follow [the doc](dl-getting-started.md) to run your first contract.
-(Again, please note that you need to choose non-conflicting asset ids to properly use the Sandbox.)
+## Register your certificate
 
+Next, let's register your certificate in the Scalar DL network.
+The registered certificate will allow you to register and execute contracts, and is also used for tamper detection of the data stored in the network.
+
+In the `scalardl-client-sdk` directory:
 ```
-# A host name of Scalar DL Sandbox network
-scalar.ledger.client.server_host=sandbox.scalar-labs.com
-
-# A port number of Scalar DL Sandbox network
-scalar.ledger.client.server_port=443
-
-# A flag to enable TLS communication.
-scalar.ledger.client.tls.enabled=true
-
-# An authorization credential. (e.g. authorization: Bearer token)
-# If this is given, clients will add "authorization: <credential>" http/2 header.
-scalar.ledger.client.authorization.credential=Bearer <your-token>
+$ client/bin/register-cert -properties client.properties
 ```
+* The `client.properties` should be the same file from the zip downloaded earlier.
+
+## Run the StateUpdater contract
+
+We will run the contract [`scr/main/java/com/org1/contract/StateUpdater.java`](https://github.com/scalar-labs/scalardl-client-sdk/blob/master/src/main/java/com/org1/contract/StateUpdater.java), which manages status of some asset.
+
+In the `scalardl-client-sdk` directory:
+
+1. Compile the contract
+
+    ```
+    $ ./gradlew assemble
+    ```
+
+    This will generate `build/classes/java/main/com/org1/contract/StateUpdater.class`.
+
+2. Register the contract
+
+    NOTE: Please replace `<username>` with your GitHub username.
+
+    ```
+    $ client/bin/register-contract -properties client.properties -contract-id <username>-StateUpdater -contract-binary-name com.org1.contract.StateUpdater -contract-class-file build/classes/java/main/com/org1/contract/StateUpdater.class
+    ```
+
+3. Execute the contract
+
+    NOTE: Please replace `<username>` with your GitHub username.
+    ```
+    $ client/bin/execute-contract -properties client.properties -contract-id <username>-StateUpdater -contract-argument '{"asset_id": "<username>-myasset", "state": 3}'
+    ```
+  
+## What's next
+
+Please take a look at [Getting Started with Scalar DL](dl-getting-started.md) to learn more about Scalar DL. 
 
 ## References
 
