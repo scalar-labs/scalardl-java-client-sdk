@@ -116,7 +116,7 @@ In Scalar DL 1.0, `asset_id` is not a reserved json key name and you can use any
 
 ## Create your contracts
 
-As we explained above, what you need to do is implementing `invoke` method as you like.
+As we explained above, what you need to do is implement the `invoke` method as you like.
 We are preparing more sample contracts, so please wait for an update.
 
 To quickly run and test your contrats, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be useful.
