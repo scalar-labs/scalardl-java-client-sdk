@@ -120,7 +120,7 @@ As we explained above, what you need to do is implement the `invoke` method as y
 We are preparing more sample contracts, so please wait for an update.
 
 To quickly run and test your contrats, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be useful.
-It uses mutable in-memory ledger instead of immutable ledger database and provides interactive interface, so you can do trial and errors more easily.
+It uses a mutable in-memory ledger instead of an immutable ledger database and provides an interactive interface, making it easy to do trial and error testing.
 
 ## Interact with ClientService 
 
