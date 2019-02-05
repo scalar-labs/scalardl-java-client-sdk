@@ -23,7 +23,7 @@ Please note that we generate a key pair for ease of use for the Sandbox environm
 
 ## Before running your first contract 
 
-Let's install [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) first unless you have it
+Please make sure you have the [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed before continuing. Now you can download the Scalar DL client SDK to interact with Scalar DL network.
 and clone Scalar DL client SDK to interact with Scalar DL network.
 ```
 $ git clone https://github.com/scalar-labs/scalardl-client-sdk.git 
