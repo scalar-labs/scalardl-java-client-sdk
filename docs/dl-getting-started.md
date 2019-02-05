@@ -114,6 +114,14 @@ In the contract argument, the value specified with the key `asset_id` must be un
 In Scalar DL 1.0, `asset_id` is not a reserved json key name and you can use any json key name, but this will probably be changed in future versions.
 (`asset_id` and `asset_ids` will be reserved for future enhancements.)
 
+## Create your contracts
+
+It's about time to create your contracts.
+As we explained above, what you need to do is implementing `invoke` method as you like.
+We are preparing more sample contracts, so please wait for an update.
+
+To quickly run and test your contrats, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be pretty useful.
+It uses mutable in-memory ledger instead of immutable ledger database and provides interactive interface, so you can speed up your development.
 
 ## Interact with ClientService 
 
@@ -141,3 +149,4 @@ For more information, please take a look at [Javadoc](https://scalar-labs.github
 
 * Design Document (coming soon)
 * [Javadoc for client SDK](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client/)
+* Contract Development Guideline (coming soon)
