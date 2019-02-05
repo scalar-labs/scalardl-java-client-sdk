@@ -47,8 +47,8 @@ $ client/bin/register-cert -properties client.properties
 
 ## Create a contract
 
-Contracts in Scalar DL are simply Java classes which extend the class named `Contract`.  
-We start with the following sample contract which creates an asset and associate some state with it.
+Contracts in Scalar DL are simply Java classes which extend the `Contract` class.
+We start with the following sample contract which creates an asset and associates some state with it.
 
 ```java
 [StateUpdater.java]
@@ -80,11 +80,11 @@ public class StateUpdater extends Contract {
 }
 ```
 
-This contract will extract a client-defined asset ID (`asset_id`) and state (`state`) from the argument, and associate the asset ID with the state in the ledger, if the given state is different from the asset's current state.
+This contract will extract a client-defined asset ID (`asset_id`) and state (`state`) from the argument and associate the asset ID with the state in the ledger, if the given state is different from the asset's current state.
 
 Next we need to compile the contract. This can be done with:
 ```
-$ gradle assemble
+$ ./gradlew assemble
 ```
 
 This will generate `build/classes/java/main/com/org1/contract/StateUpdater.class`.
