@@ -120,8 +120,8 @@ It's about time to create your contracts.
 As we explained above, what you need to do is implementing `invoke` method as you like.
 We are preparing more sample contracts, so please wait for an update.
 
-To quickly run and test your contrats, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be pretty useful.
-It uses mutable in-memory ledger instead of immutable ledger database and provides interactive interface, so you can speed up your development.
+To quickly run and test your contrats, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be useful.
+It uses mutable in-memory ledger instead of immutable ledger database and provides interactive interface, so you can do trial and errors more easily.
 
 ## Interact with ClientService 
 
