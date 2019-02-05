@@ -122,7 +122,7 @@ The following is a code snippet showing how to use `ClientService` to execute a 
 
 ```java
   Injector injector =
-  Guice.createInjector(new ClientModule(new Clientig(new File(properties))));
+  Guice.createInjector(new ClientModule(new ClientConfig(new File(properties))));
 
   try (ClientService service = injector.getInstance(ClientService.class)) {
     JsonObject jsonArgument = Json.createReader(new StringReader(contractArgument)).readObject();
