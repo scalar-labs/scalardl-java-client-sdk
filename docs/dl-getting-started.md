@@ -47,7 +47,7 @@ $ client/bin/register-cert -properties client.properties
 
 ## Create a contract
 
-Contracts in Scalar DL are simply Java classes which extend the `Contract` class.
+Contracts in Scalar DL are simply Java classes which extend the `Contract` class and override the `invoke` method.
 We start with the following sample contract which creates an asset and associates some state with it.
 
 ```java
@@ -114,9 +114,9 @@ In the contract argument, the value specified with the key `asset_id` must be un
 In Scalar DL 1.0, `asset_id` is not a reserved json key name and you can use any json key name, but this will probably be changed in future versions.
 (`asset_id` and `asset_ids` will be reserved for future enhancements.)
 
-## Create your contracts
+## Create your own contracts
 
-As we explained above, what you need to do is implement the `invoke` method as you like.
+As we explained above, what you need to create your own contracts is extend `Contract` class and override the `invoke` method as you like.
 We are preparing more sample contracts, so please wait for an update.
 
 To quickly run and test your contrats, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be useful.
