@@ -47,8 +47,8 @@ $ client/bin/register-cert -properties client.properties
 
 ## Create a contract
 
-Contracts in Scalar DL are simply Java classes which extend the class named `Contract`.  
-We start with the following sample contract which creates an asset and associate some state with it.
+Contracts in Scalar DL are simply Java classes which extend the `Contract` class and override the `invoke` method.
+We start with the following sample contract which creates an asset and associates some state with it.
 
 ```java
 [StateUpdater.java]
@@ -80,11 +80,11 @@ public class StateUpdater extends Contract {
 }
 ```
 
-This contract will extract a client-defined asset ID (`asset_id`) and state (`state`) from the argument, and associate the asset ID with the state in the ledger, if the given state is different from the asset's current state.
+This contract will extract a client-defined asset ID (`asset_id`) and state (`state`) from the argument and associate the asset ID with the state in the ledger, if the given state is different from the asset's current state.
 
 Next we need to compile the contract. This can be done with:
 ```
-$ gradle assemble
+$ ./gradlew assemble
 ```
 
 This will generate `build/classes/java/main/com/org1/contract/StateUpdater.class`.
@@ -114,6 +114,12 @@ In the contract argument, the value specified with the key `asset_id` must be un
 In Scalar DL 1.0, `asset_id` is not a reserved json key name and you can use any json key name, but this will probably be changed in future versions.
 (`asset_id` and `asset_ids` will be reserved for future enhancements.)
 
+## Create your own contracts
+
+As we explained above, what you need to create your own contracts is extend the `Contract` class and override the `invoke` method as you like.
+We are preparing more sample contracts, so please wait for an update.
+
+To quickly run and test your contrats in your local environment, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be useful. It uses a mutable in-memory ledger instead of an immutable ledger database and provides an interactive interface, making it easy to do trial and error testing.
 
 ## Interact with ClientService 
 
@@ -122,7 +128,7 @@ The following is a code snippet showing how to use `ClientService` to execute a 
 
 ```java
   Injector injector =
-  Guice.createInjector(new ClientModule(new Clientig(new File(properties))));
+  Guice.createInjector(new ClientModule(new ClientConfig(new File(properties))));
 
   try (ClientService service = injector.getInstance(ClientService.class)) {
     JsonObject jsonArgument = Json.createReader(new StringReader(contractArgument)).readObject();
@@ -141,3 +147,4 @@ For more information, please take a look at [Javadoc](https://scalar-labs.github
 
 * Design Document (coming soon)
 * [Javadoc for client SDK](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client/)
+* Contract Development Guideline (coming soon)
