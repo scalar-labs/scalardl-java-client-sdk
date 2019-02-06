@@ -116,11 +116,10 @@ In Scalar DL 1.0, `asset_id` is not a reserved json key name and you can use any
 
 ## Create your own contracts
 
-As we explained above, what you need to create your own contracts is extend `Contract` class and override the `invoke` method as you like.
+As we explained above, what you need to create your own contracts is extend the `Contract` class and override the `invoke` method as you like.
 We are preparing more sample contracts, so please wait for an update.
 
-To quickly run and test your contrats, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be useful.
-It uses a mutable in-memory ledger instead of an immutable ledger database and provides an interactive interface, making it easy to do trial and error testing.
+To quickly run and test your contrats in your local environment, [Scalar DL Emulator](https://github.com/scalar-labs/scalardl-emulator) might be useful. It uses a mutable in-memory ledger instead of an immutable ledger database and provides an interactive interface, making it easy to do trial and error testing.
 
 ## Interact with ClientService 
 
