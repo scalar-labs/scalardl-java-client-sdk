@@ -3,6 +3,7 @@ package com.org1.contract;
 import com.scalar.ledger.asset.Asset;
 import com.scalar.ledger.asset.InternalAsset;
 import com.scalar.ledger.contract.Contract;
+import com.scalar.ledger.exception.ContractContextException;
 import com.scalar.ledger.ledger.Ledger;
 
 import javax.json.Json;
@@ -16,8 +17,14 @@ public class StateReader extends Contract {
   @Override
   public JsonObject invoke(Ledger ledger, JsonObject argument, Optional<JsonObject> properties) {
     String assetId = argument.getString("asset_id");
+    if (assetId == null) {
+      throw new ContractContextException("please set asset_id in the argument");
+    }
 
     Optional<Asset> asset = ledger.get(assetId);
+    if (!asset.isPresent()) {
+      return null;
+    }
     InternalAsset internal = (InternalAsset) asset.get();
 
     Base64.Encoder encoder = Base64.getEncoder();
