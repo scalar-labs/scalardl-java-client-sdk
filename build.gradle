@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.4'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 apply plugin: 'idea'
 
@@ -10,5 +20,26 @@ dependencies {
     compile fileTree(dir: 'client/lib', include: '*.jar')
 }
 
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+shadowJar {
+    classifier = null
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+group = "com.scalar-labs"
+archivesBaseName = "scalardl-client-sdk"
+version = "1.0.0-alpha.20190222"
+
+// for archiving and uploading to maven central
+//apply from: 'archive.gradle'
