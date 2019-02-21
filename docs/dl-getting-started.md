@@ -47,25 +47,29 @@ $ client/bin/register-cert -properties client.properties
 
 ## Create a contract
 
-Contracts in Scalar DL are simply Java classes which extend the `Contract` class and override the `invoke` method.
-We start with the following sample contract which creates an asset and associates some state with it.
+Contracts in Scalar DL are simply Java classes which extend the `Contract` class and override the `invoke` method. Let's take a closer look at the `StateUpdater.java` contract which creates an asset and associates some state with it.
 
 ```java
-[StateUpdater.java]
 package com.org1.contract;
 
-import com.scalar.ledger.contract.Contract;
-import com.scalar.ledger.ledger.Ledger;
 import com.scalar.ledger.asset.Asset;
-
+import com.scalar.ledger.contract.Contract;
+import com.scalar.ledger.exception.ContractContextException;
+import com.scalar.ledger.ledger.Ledger;
+import java.util.Optional;
 import javax.json.Json;
 import javax.json.JsonObject;
-import java.util.Optional;
 
 public class StateUpdater extends Contract {
 
   @Override
   public JsonObject invoke(Ledger ledger, JsonObject argument, Optional<JsonObject> properties) {
+    if (!argument.containsKey("asset_id") || !argument.containsKey("state")) {
+      // ContractContextException is the only throwable exception in a contract and
+      // it should be thrown when a contract faces some non-recoverable error
+      throw new ContractContextException("please set asset_id and state in the argument");
+    }
+
     String assetId = argument.getString("asset_id");
     int state = argument.getInt("state");
 
