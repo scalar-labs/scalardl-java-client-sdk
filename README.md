@@ -7,7 +7,7 @@ The library is available on [Maven Central](https://search.maven.org/search?q=a:
 For example in Gradle, you can add the following dependency to your build.gradle.
 ```
 dependencies {
-    compile group: 'com.scalar-labs', name: 'scalardl-client-sdk', version: '1.0.0-alpha.20190221'
+    compile group: 'com.scalar-labs', name: 'scalardl-client-sdk', version: '1.0.0-alpha.20190222'
 }
 ```
 
