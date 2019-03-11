@@ -10,7 +10,7 @@ If you want to interact with Scalar DL more deeply, please [contact us](https://
 
 ## Get an auth token and a key pair (a certificate and a private key)
 
-From here, you will need a [GitHub](https://github.com/) account.
+You will need a [GitHub](https://github.com/) account to continue.
 If you don't have one, please create a free account.
 
 We will authorize you through GitHub OAuth to grant you access to the Sandbox environment.
@@ -23,15 +23,13 @@ Please note that we generate a key pair for ease of use for the Sandbox environm
 
 ## Before running your first contract 
 
-Please make sure you have the [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed before continuing. Now you can download the Scalar DL client SDK to interact with Scalar DL network.
-and clone Scalar DL client SDK to interact with Scalar DL network.
+Please make sure you have the [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) installed, and, if you haven't already, download the Scalar DL Client SDK.
+
 ```
 $ git clone https://github.com/scalar-labs/scalardl-client-sdk.git 
 ```
-Unzip the downloaded zip file into this directory.
 
-Scalar DL manages data as a set of assets, where each asset is composed of a history of data identified by a key called `asset_id` and historical version number called `age`.
-`asset_id` is an arbitrary, but unique, string specified by users to manage their assets.
+Scalar DL manages data as a set of assets. Each asset is identified by its `asset_id`, an arbitrary, but unique, string specified by a user to manage the asset, and consists of its change history. Each history item is made up of the `asset_id`, an `age` (starting from zero), and `data` at the specified age.
 
 Since the Sandbox is a shared environment that anyone can access,
 take special care when choosing appropriate names for your `asset_id`s so that they will not conflict with the `asset_id`s chosen by other user.
