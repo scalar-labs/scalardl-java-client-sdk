@@ -12,13 +12,7 @@ dependencies {
 ```
 
 ## Docs
-* [Getting started with Scalar DL Sandbox](docs/dl-sandbox.md)
-* [Getting started with Scalar DL](docs/dl-getting-started.md)
-* Design document of Scalar DL (coming soon)
-* Javadocs
-    * [Client SDK](https://scalar-labs.github.io/scalardl-client-sdk/javadoc/client)
-    * Ledger (for writing contract) (coming soon)
-* Sample applications by contributors/collaborators (coming soon)
+* [Scalar DL Docs](https://scalardl.readthedocs.io/en/latest/)
 
 ## Contributing 
 This library is mainly maintained by the Scalar Engineering Team, but of course we appreciate any help.
