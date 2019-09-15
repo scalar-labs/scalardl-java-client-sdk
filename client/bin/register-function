@@ -2,7 +2,7 @@
 
 ##############################################################################
 ##
-##  register-contracts start up script for UN*X
+##  register-function start up script for UN*X
 ##
 ##############################################################################
 
@@ -24,10 +24,10 @@ cd "`dirname \"$PRG\"`/.." >/dev/null
 APP_HOME="`pwd -P`"
 cd "$SAVED" >/dev/null
 
-APP_NAME="register-contracts"
+APP_NAME="register-function"
 APP_BASE_NAME=`basename "$0"`
 
-# Add default JVM options here. You can also use JAVA_OPTS and REGISTER_CONTRACTS_OPTS to pass JVM options to this script.
+# Add default JVM options here. You can also use JAVA_OPTS and REGISTER_FUNCTION_OPTS to pass JVM options to this script.
 DEFAULT_JVM_OPTS=""
 
 # Use the maximum available, or set MAX_FD != -1 to use that value.
@@ -162,7 +162,7 @@ save () {
 APP_ARGS=$(save "$@")
 
 # Collect all arguments for the java command, following the shell quoting and substitution rules
-eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $REGISTER_CONTRACTS_OPTS -classpath "\"$CLASSPATH\"" com.scalar.client.tool.ContractsRegistration "$APP_ARGS"
+eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $REGISTER_FUNCTION_OPTS -classpath "\"$CLASSPATH\"" com.scalar.client.tool.FunctionRegistration "$APP_ARGS"
 
 # by default we should be in the correct project dir, but when run from Finder on Mac, the cwd is wrong
 if [ "$(uname)" = "Darwin" ] && [ "$HOME" = "$PWD" ]; then
