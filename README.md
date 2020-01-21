@@ -3,11 +3,11 @@
 This is a client-side library to interact with [Scalar DL](https://github.com/scalar-labs/scalardl) network.
 
 ## Install
-The library is available on [Maven Central](https://search.maven.org/search?q=a:scalardl-client-sdk). You can install it in your application using your build tool such as Gradle.
+The library is available on [Maven Central](https://search.maven.org/search?q=a:scalardl-java-client-sdk). You can install it in your application using your build tool such as Gradle.
 For example in Gradle, you can add the following dependency to your build.gradle.
 ```
 dependencies {
-    compile group: 'com.scalar-labs', name: 'scalardl-client-sdk', version: '1.1.0'
+    compile group: 'com.scalar-labs', name: 'scalardl-java-client-sdk', version: '<version>'
 }
 ```
 
