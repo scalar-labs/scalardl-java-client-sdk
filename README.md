@@ -1,6 +1,6 @@
-## Scalar DL Client SDK
+## Scalar DL Java Client SDK
 
-This is a client-side library to interact with [Scalar DL](https://github.com/scalar-labs/scalardl) network.
+This is a client-side Java library to interact with [Scalar DL](https://github.com/scalar-labs/scalardl) network.
 
 ## Install
 The library is available on [Maven Central](https://search.maven.org/search?q=a:scalardl-java-client-sdk). You can install it in your application using your build tool such as Gradle.
