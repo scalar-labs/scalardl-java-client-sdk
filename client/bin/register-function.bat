@@ -1,3 +1,19 @@
+@rem
+@rem Copyright 2015 the original author or authors.
+@rem
+@rem Licensed under the Apache License, Version 2.0 (the "License");
+@rem you may not use this file except in compliance with the License.
+@rem You may obtain a copy of the License at
+@rem
+@rem      https://www.apache.org/licenses/LICENSE-2.0
+@rem
+@rem Unless required by applicable law or agreed to in writing, software
+@rem distributed under the License is distributed on an "AS IS" BASIS,
+@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@rem See the License for the specific language governing permissions and
+@rem limitations under the License.
+@rem
+
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
@@ -63,10 +79,10 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\client.jar;%APP_HOME%\lib\ordering.jar;%APP_HOME%\lib\proof.jar;%APP_HOME%\lib\ledger.jar;%APP_HOME%\lib\rpc.jar;%APP_HOME%\lib\scalardb-1.1.0.jar;%APP_HOME%\lib\slf4j-log4j12-1.7.25.jar;%APP_HOME%\lib\guice-4.2.0.jar;%APP_HOME%\lib\javax.json-api-1.1.4.jar;%APP_HOME%\lib\javax.json-1.1.4.jar;%APP_HOME%\lib\bcpkix-jdk15on-1.59.jar;%APP_HOME%\lib\toml4j-0.7.2.jar;%APP_HOME%\lib\kafka-clients-2.1.0.jar;%APP_HOME%\lib\cassandra-driver-core-3.6.0.jar;%APP_HOME%\lib\metrics-core-3.2.2.jar;%APP_HOME%\lib\slf4j-api-1.7.25.jar;%APP_HOME%\lib\log4j-1.2.17.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\grpc-alts-1.13.2.jar;%APP_HOME%\lib\grpc-services-1.13.2.jar;%APP_HOME%\lib\grpc-grpclb-1.13.2.jar;%APP_HOME%\lib\grpc-protobuf-1.13.2.jar;%APP_HOME%\lib\protobuf-java-util-3.6.0.jar;%APP_HOME%\lib\grpc-netty-1.13.2.jar;%APP_HOME%\lib\grpc-stub-1.13.2.jar;%APP_HOME%\lib\grpc-protobuf-lite-1.13.2.jar;%APP_HOME%\lib\grpc-core-1.13.2.jar;%APP_HOME%\lib\guava-24.1-jre.jar;%APP_HOME%\lib\proto-google-common-protos-1.0.0.jar;%APP_HOME%\lib\netty-tcnative-boringssl-static-2.0.7.Final.jar;%APP_HOME%\lib\bcprov-jdk15on-1.59.jar;%APP_HOME%\lib\gson-2.8.1.jar;%APP_HOME%\lib\jsr305-3.0.0.jar;%APP_HOME%\lib\checker-compat-qual-2.0.0.jar;%APP_HOME%\lib\error_prone_annotations-2.1.3.jar;%APP_HOME%\lib\j2objc-annotations-1.1.jar;%APP_HOME%\lib\animal-sniffer-annotations-1.14.jar;%APP_HOME%\lib\protobuf-java-3.6.0.jar;%APP_HOME%\lib\commons-lang3-3.5.jar;%APP_HOME%\lib\netty-codec-http2-4.1.25.Final.jar;%APP_HOME%\lib\netty-handler-proxy-4.1.25.Final.jar;%APP_HOME%\lib\re2j-1.2.jar;%APP_HOME%\lib\zstd-jni-1.3.5-4.jar;%APP_HOME%\lib\lz4-java-1.5.0.jar;%APP_HOME%\lib\snappy-java-1.1.7.2.jar;%APP_HOME%\lib\grpc-context-1.13.2.jar;%APP_HOME%\lib\opencensus-contrib-grpc-metrics-0.12.3.jar;%APP_HOME%\lib\opencensus-api-0.12.3.jar;%APP_HOME%\lib\netty-codec-http-4.1.25.Final.jar;%APP_HOME%\lib\netty-handler-4.1.25.Final.jar;%APP_HOME%\lib\netty-codec-socks-4.1.25.Final.jar;%APP_HOME%\lib\netty-codec-4.1.25.Final.jar;%APP_HOME%\lib\netty-transport-4.1.25.Final.jar;%APP_HOME%\lib\netty-buffer-4.1.25.Final.jar;%APP_HOME%\lib\netty-resolver-4.1.25.Final.jar;%APP_HOME%\lib\jnr-posix-3.0.44.jar;%APP_HOME%\lib\jnr-ffi-2.1.7.jar;%APP_HOME%\lib\netty-common-4.1.25.Final.jar;%APP_HOME%\lib\jffi-1.2.16.jar;%APP_HOME%\lib\jffi-1.2.16-native.jar;%APP_HOME%\lib\asm-commons-5.0.3.jar;%APP_HOME%\lib\asm-analysis-5.0.3.jar;%APP_HOME%\lib\asm-util-5.0.3.jar;%APP_HOME%\lib\asm-tree-5.0.3.jar;%APP_HOME%\lib\asm-5.0.3.jar;%APP_HOME%\lib\jnr-x86asm-1.0.2.jar;%APP_HOME%\lib\jnr-constants-0.9.9.jar
+set CLASSPATH=%APP_HOME%\lib\client.jar;%APP_HOME%\lib\common.jar;%APP_HOME%\lib\rpc.jar;%APP_HOME%\lib\slf4j-log4j12-1.7.25.jar;%APP_HOME%\lib\guice-4.2.0.jar;%APP_HOME%\lib\javax.json-api-1.1.4.jar;%APP_HOME%\lib\javax.json-1.1.4.jar;%APP_HOME%\lib\toml4j-0.7.2.jar;%APP_HOME%\lib\slf4j-api-1.7.25.jar;%APP_HOME%\lib\log4j-1.2.17.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\grpc-alts-1.13.2.jar;%APP_HOME%\lib\grpc-services-1.13.2.jar;%APP_HOME%\lib\grpc-grpclb-1.13.2.jar;%APP_HOME%\lib\grpc-protobuf-1.13.2.jar;%APP_HOME%\lib\protobuf-java-util-3.6.0.jar;%APP_HOME%\lib\grpc-netty-1.13.2.jar;%APP_HOME%\lib\grpc-stub-1.13.2.jar;%APP_HOME%\lib\grpc-protobuf-lite-1.13.2.jar;%APP_HOME%\lib\grpc-core-1.13.2.jar;%APP_HOME%\lib\guava-23.6-android.jar;%APP_HOME%\lib\proto-google-common-protos-1.0.0.jar;%APP_HOME%\lib\netty-tcnative-boringssl-static-2.0.7.Final.jar;%APP_HOME%\lib\bcpkix-jdk15on-1.59.jar;%APP_HOME%\lib\bcprov-jdk15on-1.59.jar;%APP_HOME%\lib\gson-2.8.1.jar;%APP_HOME%\lib\jsr305-3.0.0.jar;%APP_HOME%\lib\checker-compat-qual-2.0.0.jar;%APP_HOME%\lib\error_prone_annotations-2.1.3.jar;%APP_HOME%\lib\j2objc-annotations-1.1.jar;%APP_HOME%\lib\animal-sniffer-annotations-1.14.jar;%APP_HOME%\lib\protobuf-java-3.6.0.jar;%APP_HOME%\lib\commons-lang3-3.5.jar;%APP_HOME%\lib\netty-codec-http2-4.1.25.Final.jar;%APP_HOME%\lib\netty-handler-proxy-4.1.25.Final.jar;%APP_HOME%\lib\re2j-1.2.jar;%APP_HOME%\lib\grpc-context-1.13.2.jar;%APP_HOME%\lib\opencensus-contrib-grpc-metrics-0.12.3.jar;%APP_HOME%\lib\opencensus-api-0.12.3.jar;%APP_HOME%\lib\netty-codec-http-4.1.25.Final.jar;%APP_HOME%\lib\netty-handler-4.1.25.Final.jar;%APP_HOME%\lib\netty-codec-socks-4.1.25.Final.jar;%APP_HOME%\lib\netty-codec-4.1.25.Final.jar;%APP_HOME%\lib\netty-transport-4.1.25.Final.jar;%APP_HOME%\lib\netty-buffer-4.1.25.Final.jar;%APP_HOME%\lib\netty-resolver-4.1.25.Final.jar;%APP_HOME%\lib\netty-common-4.1.25.Final.jar
 
 @rem Execute register-function
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %REGISTER_FUNCTION_OPTS%  -classpath "%CLASSPATH%" com.scalar.client.tool.FunctionRegistration %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %REGISTER_FUNCTION_OPTS%  -classpath "%CLASSPATH%" com.scalar.dl.client.tool.FunctionRegistration %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

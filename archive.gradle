@@ -23,16 +23,16 @@ uploadArchives {
             }
 
             pom.project {
-                name 'Scalar DL Client SDK'
+                name 'Scalar DL Java Client SDK'
                 packaging 'jar'
                 // optionally artifactId can be defined here 
-                description 'A client-side library to interact with Scalar DL network.'
-                url 'https://github.com/scalar-labs/scalardl-client-sdk'
+                description 'A client-side Java library to interact with Scalar DL network.'
+                url 'https://github.com/scalar-labs/scalardl-java-client-sdk'
 
                 scm {
-                    connection 'scm:git:https://github.com/scalar-labs/scalardl-client-sdk.git'
-                    developerConnection 'scm:git:https://github.com/scalar-labs/scalardl-client-sdk.git'
-                    url 'https://github.com/scalar-labs/scalardl-client-sdk'
+                    connection 'scm:git:https://github.com/scalar-labs/scalardl-java-client-sdk.git'
+                    developerConnection 'scm:git:https://github.com/scalar-labs/scalardl-java-client-sdk.git'
+                    url 'https://github.com/scalar-labs/scalardl-java-client-sdk'
                 }
 
                 licenses {

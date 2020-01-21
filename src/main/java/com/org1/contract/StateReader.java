@@ -1,10 +1,10 @@
 package com.org1.contract;
 
-import com.scalar.ledger.asset.Asset;
-import com.scalar.ledger.asset.InternalAsset;
-import com.scalar.ledger.contract.Contract;
-import com.scalar.ledger.exception.ContractContextException;
-import com.scalar.ledger.ledger.Ledger;
+import com.scalar.dl.ledger.asset.Asset;
+import com.scalar.dl.ledger.asset.InternalAsset;
+import com.scalar.dl.ledger.contract.Contract;
+import com.scalar.dl.ledger.exception.ContractContextException;
+import com.scalar.dl.ledger.database.Ledger;
 import java.util.Base64;
 import java.util.Optional;
 import javax.json.Json;
