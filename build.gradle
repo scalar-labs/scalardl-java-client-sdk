@@ -39,7 +39,7 @@ targetCompatibility = 1.8
 
 group = "com.scalar-labs"
 archivesBaseName = "scalardl-java-client-sdk"
-version = "2.0.8"
+version = "2.0.9"
 
 // for archiving and uploading to maven central
 //apply from: 'archive.gradle'
