@@ -2,12 +2,8 @@ buildscript {
     repositories {
         jcenter()
     }
-    dependencies {
-        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.4'
-    }
 }
 
-apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'java'
 apply plugin: 'idea'
 
@@ -16,30 +12,8 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'client', include: '*.jar')
-    compile fileTree(dir: 'client/lib', include: '*.jar')
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
-}
-
-shadowJar {
-    classifier = null
+    compile group: 'com.scalar-labs', name: 'scalardl-java-client-sdk', version: '3.0.1'
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-group = "com.scalar-labs"
-archivesBaseName = "scalardl-java-client-sdk"
-version = "2.2.0"
-
-// for archiving and uploading to maven central
-//apply from: 'archive.gradle'
