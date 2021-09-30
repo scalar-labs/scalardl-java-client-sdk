@@ -1,9 +1,11 @@
 package com.scalar.dl.client.contract;
 
+import com.scalar.dl.ledger.asset.Asset;
 import com.scalar.dl.ledger.contract.Contract;
 import com.scalar.dl.ledger.database.AssetFilter;
 import com.scalar.dl.ledger.database.Ledger;
 import com.scalar.dl.ledger.exception.ContractContextException;
+import java.util.List;
 import java.util.Optional;
 import javax.json.JsonObject;
 
@@ -19,16 +21,21 @@ public class ValidateLedger extends Contract {
     }
     String assetId = argument.getString(ASSET_ID_KEY);
 
-    // Simply reading the specified assets to return the corresponding AssetProofs
+    Optional<JsonObject> data;
     if (argument.containsKey(AGE_KEY)) {
       int age = argument.getInt(AGE_KEY);
       AssetFilter filter = new AssetFilter(ASSET_ID_KEY).withStartAge(age, true)
           .withEndAge(age, true);
-      ledger.scan(filter);
+      List<Asset> assets = ledger.scan(filter);
+      if (assets.isEmpty()) {
+        data = Optional.empty();
+      } else {
+        data = Optional.of(assets.get(0).data());
+      }
     } else {
-      ledger.get(assetId);
+      data = ledger.get(assetId).map(Asset::data);
     }
 
-    return null;
+    return data.orElse(null);
   }
 }
