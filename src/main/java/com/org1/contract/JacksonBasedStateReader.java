@@ -8,6 +8,10 @@ import com.scalar.dl.ledger.statemachine.Ledger;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The contents of the contract are the same as {@link StateReader}. It is recommended to use
+ * JacksonBasedContract for taking a good balance between development productivity and performance.
+ */
 public class JacksonBasedStateReader extends JacksonBasedContract {
 
   @Nullable
