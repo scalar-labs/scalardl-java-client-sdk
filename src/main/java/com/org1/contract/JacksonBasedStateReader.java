@@ -9,10 +9,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * It is recommended to use JacksonBasedContract for taking a good balance between development
- * productivity and performance.
+ * The contents of the contract are the same as {@link StateReader}. It is recommended to use
+ * JacksonBasedContract for taking a good balance between development productivity and performance.
  */
-public class StateReader extends JacksonBasedContract {
+public class JacksonBasedStateReader extends JacksonBasedContract {
 
   @Nullable
   @Override

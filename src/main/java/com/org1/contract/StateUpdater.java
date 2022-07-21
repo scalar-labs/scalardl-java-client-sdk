@@ -1,30 +1,36 @@
 package com.org1.contract;
 
-import com.scalar.dl.ledger.asset.Asset;
-import com.scalar.dl.ledger.contract.Contract;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.scalar.dl.ledger.contract.JacksonBasedContract;
 import com.scalar.dl.ledger.exception.ContractContextException;
-import com.scalar.dl.ledger.database.Ledger;
+import com.scalar.dl.ledger.statemachine.Asset;
+import com.scalar.dl.ledger.statemachine.Ledger;
 import java.util.Optional;
-import javax.json.Json;
-import javax.json.JsonObject;
+import javax.annotation.Nullable;
 
-public class StateUpdater extends Contract {
+/**
+ * It is recommended to use JacksonBasedContract for taking a good balance between development
+ * productivity and performance.
+ */
+public class StateUpdater extends JacksonBasedContract {
 
+  @Nullable
   @Override
-  public JsonObject invoke(Ledger ledger, JsonObject argument, Optional<JsonObject> properties) {
-    if (!argument.containsKey("asset_id") || !argument.containsKey("state")) {
+  public JsonNode invoke(
+      Ledger<JsonNode> ledger, JsonNode argument, @Nullable JsonNode properties) {
+    if (!argument.has("asset_id") || !argument.has("state")) {
       // ContractContextException is the only throwable exception in a contract and
       // it should be thrown when a contract faces some non-recoverable error
       throw new ContractContextException("please set asset_id and state in the argument");
     }
 
-    String assetId = argument.getString("asset_id");
-    int state = argument.getInt("state");
+    String assetId = argument.get("asset_id").asText();
+    int state = argument.get("state").asInt();
 
-    Optional<Asset> asset = ledger.get(assetId);
+    Optional<Asset<JsonNode>> asset = ledger.get(assetId);
 
-    if (!asset.isPresent() || asset.get().data().getInt("state") != state) {
-      ledger.put(assetId, Json.createObjectBuilder().add("state", state).build());
+    if (!asset.isPresent() || asset.get().data().get("state").asInt() != state) {
+      ledger.put(assetId, getObjectMapper().createObjectNode().put("state", state));
     }
 
     return null;
