@@ -33,6 +33,6 @@ public class StateUpdaterReader extends JacksonBasedContract {
       ledger.put(assetId, getObjectMapper().createObjectNode().put("state", state));
     }
 
-    return invoke("jackson-state-reader", ledger, argument);
+    return invoke("state-reader", ledger, argument);
   }
 }
