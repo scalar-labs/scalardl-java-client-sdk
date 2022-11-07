@@ -12,7 +12,7 @@ dependencies {
 ```
 
 ## Docs
-* [Scalar DL Docs](https://scalardl.readthedocs.io/en/latest/)
+* [Scalar DL Docs](https://scalar-labs.github.io/scalardl/)
 
 ## Contributing 
 This library is mainly maintained by the Scalar Engineering Team, but of course we appreciate any help.
