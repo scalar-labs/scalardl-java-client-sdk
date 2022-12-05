@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.scalar-labs', name: 'scalardl-java-client-sdk', version: '3.4.3'
+    implementation group: 'com.scalar-labs', name: 'scalardl-java-client-sdk', version: '3.4.4'
     testImplementation group: 'junit', name: 'junit', version: "4.12"
     testImplementation group: 'org.assertj', name: 'assertj-core', version: "3.9.1"
     testImplementation group: 'org.mockito', name: 'mockito-core', version: "2.16.0"
