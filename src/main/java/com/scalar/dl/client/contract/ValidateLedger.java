@@ -1,18 +1,17 @@
 package com.scalar.dl.client.contract;
 
-import com.scalar.dl.ledger.asset.Asset;
-import com.scalar.dl.ledger.contract.Contract;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.scalar.dl.ledger.contract.JacksonBasedContract;
 import com.scalar.dl.ledger.database.AssetFilter;
 import com.scalar.dl.ledger.database.AssetFilter.AgeOrder;
-import com.scalar.dl.ledger.database.Ledger;
 import com.scalar.dl.ledger.exception.ContractContextException;
+import com.scalar.dl.ledger.statemachine.Asset;
+import com.scalar.dl.ledger.statemachine.Ledger;
 import java.util.List;
-import java.util.Optional;
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
 
-public class ValidateLedger extends Contract {
+public class ValidateLedger extends JacksonBasedContract {
   static final String ASSET_ID_KEY = "asset_id";
   static final String AGE_KEY = "age";
   static final String START_AGE_KEY = "start_age";
@@ -20,24 +19,25 @@ public class ValidateLedger extends Contract {
   static final String DATA_KEY = "data";
 
   @Override
-  public JsonObject invoke(Ledger ledger, JsonObject argument, Optional<JsonObject> properties) {
-    if (!argument.containsKey(ASSET_ID_KEY)) {
+  public JsonNode invoke(Ledger<JsonNode> ledger, JsonNode argument, JsonNode properties) {
+    if (!argument.has(ASSET_ID_KEY)) {
       throw new ContractContextException("please set asset_id in the argument");
     }
-    String assetId = argument.getString(ASSET_ID_KEY);
+
+    String assetId = argument.get(ASSET_ID_KEY).asText();
 
     int startAge = 0;
     int endAge = Integer.MAX_VALUE;
-    if (argument.containsKey(AGE_KEY)) {
-      int age = argument.getInt(AGE_KEY);
+    if (argument.has(AGE_KEY)) {
+      int age = argument.get(AGE_KEY).asInt();
       startAge = age;
       endAge = age;
     } else {
-      if (argument.containsKey(START_AGE_KEY)) {
-        startAge = argument.getInt(START_AGE_KEY);
+      if (argument.has(START_AGE_KEY)) {
+        startAge = argument.get(START_AGE_KEY).asInt();
       }
-      if (argument.containsKey(END_AGE_KEY)) {
-        endAge = argument.getInt(END_AGE_KEY);
+      if (argument.has(END_AGE_KEY)) {
+        endAge = argument.get(END_AGE_KEY).asInt();
       }
     }
 
@@ -46,14 +46,14 @@ public class ValidateLedger extends Contract {
             .withStartAge(startAge, true)
             .withEndAge(endAge, true)
             .withAgeOrder(AgeOrder.ASC);
-    List<Asset> assets = ledger.scan(filter);
+    List<Asset<JsonNode>> assets = ledger.scan(filter);
 
-    JsonArrayBuilder builder = Json.createArrayBuilder();
+    ObjectMapper mapper = new ObjectMapper();
+    ArrayNode array = mapper.createArrayNode();
+
     assets.forEach(
-        a ->
-            builder.add(
-                Json.createObjectBuilder().add(AGE_KEY, a.age()).add(DATA_KEY, a.data()).build()));
+        a -> array.add(mapper.createObjectNode().put(AGE_KEY, a.age()).set(DATA_KEY, a.data())));
 
-    return Json.createObjectBuilder().add(assetId, builder.build()).build();
+    return mapper.createObjectNode().set(assetId, array);
   }
 }
