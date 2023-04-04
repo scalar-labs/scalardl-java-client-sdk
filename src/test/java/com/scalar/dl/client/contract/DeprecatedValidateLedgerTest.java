@@ -7,45 +7,44 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.scalar.dl.ledger.asset.Asset;
 import com.scalar.dl.ledger.database.AssetFilter;
 import com.scalar.dl.ledger.database.AssetFilter.AgeOrder;
+import com.scalar.dl.ledger.database.Ledger;
 import com.scalar.dl.ledger.exception.ContractContextException;
-import com.scalar.dl.ledger.statemachine.Asset;
-import com.scalar.dl.ledger.statemachine.Ledger;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import javax.json.Json;
+import javax.json.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-public class ValidateLedgerTest {
+public class DeprecatedValidateLedgerTest {
   private static final String SOME_ASSET_ID = "some_asset_id";
   private static final int SOME_AGE = 2;
   private static final int SOME_START_AGE = 1;
   private static final int SOME_END_AGE = 3;
-  @Mock private Ledger<JsonNode> ledger;
-  private ValidateLedger validateLedger;
+  @Mock private Ledger ledger;
+  private DeprecatedValidateLedger validateLedger;
 
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
-    validateLedger = new ValidateLedger();
+    validateLedger = new DeprecatedValidateLedger();
   }
 
-  private List<Asset<JsonNode>> createMockAssets(String assetId, int startAge, int endAge) {
-
+  private List<Asset> createMockAssets(String assetId, int startAge, int endAge) {
     return IntStream.range(startAge, endAge + 1)
         .mapToObj(
             i -> {
-              @SuppressWarnings("unchecked")
-              Asset<JsonNode> asset = mock(Asset.class);
+              Asset asset = mock(Asset.class);
               when(asset.id()).thenReturn(assetId);
               when(asset.age()).thenReturn(i);
-              when(asset.data()).thenReturn(JsonNodeFactory.instance.objectNode());
+              when(asset.data()).thenReturn(JsonObject.EMPTY_JSON_OBJECT);
               return asset;
             })
         .collect(Collectors.toList());
@@ -53,18 +52,17 @@ public class ValidateLedgerTest {
 
   @Test
   public void invoke_AgeGiven_ShouldReturnOneSpecifiedAssetOnly() {
-    JsonNode argument =
-        JsonNodeFactory.instance
-            .objectNode()
-            .put(ValidateLedger.ASSET_ID_KEY, SOME_ASSET_ID)
-            .put(ValidateLedger.AGE_KEY, SOME_AGE);
-    JsonNode properties = JsonNodeFactory.instance.objectNode();
-
-    List<Asset<JsonNode>> assets = createMockAssets(SOME_ASSET_ID, SOME_AGE, SOME_AGE);
+    // Arrange
+    JsonObject argument =
+        Json.createObjectBuilder()
+            .add(DeprecatedValidateLedger.ASSET_ID_KEY, SOME_ASSET_ID)
+            .add(DeprecatedValidateLedger.AGE_KEY, SOME_AGE)
+            .build();
+    List<Asset> assets = createMockAssets(SOME_ASSET_ID, SOME_AGE, SOME_AGE);
     when(ledger.scan(any(AssetFilter.class))).thenReturn(assets);
 
     // Act
-    JsonNode result = validateLedger.invoke(ledger, argument, properties);
+    JsonObject result = validateLedger.invoke(ledger, argument, Optional.empty());
 
     // Assert
     AssetFilter expected =
@@ -73,27 +71,30 @@ public class ValidateLedgerTest {
             .withEndAge(SOME_AGE, true)
             .withAgeOrder(AgeOrder.ASC);
     verify(ledger).scan(expected);
-    assertThat(result.get(SOME_ASSET_ID).size()).isEqualTo(1);
-    assertThat(result.get(SOME_ASSET_ID).get(0).get(ValidateLedger.AGE_KEY).asInt())
+    assertThat(result.getJsonArray(SOME_ASSET_ID).size()).isEqualTo(1);
+    assertThat(
+            result
+                .getJsonArray(SOME_ASSET_ID)
+                .get(0)
+                .asJsonObject()
+                .getInt(DeprecatedValidateLedger.AGE_KEY))
         .isEqualTo(assets.get(0).age());
   }
 
   @Test
   public void invoke_StartAgeEndAgeGiven_ShouldReturnSpecifiedAssets() {
     // Arrange
-    JsonNode argument =
-        JsonNodeFactory.instance
-            .objectNode()
-            .put(ValidateLedger.ASSET_ID_KEY, SOME_ASSET_ID)
-            .put(ValidateLedger.START_AGE_KEY, SOME_START_AGE)
-            .put(ValidateLedger.END_AGE_KEY, SOME_END_AGE);
-    JsonNode properties = JsonNodeFactory.instance.objectNode();
-
-    List<Asset<JsonNode>> assets = createMockAssets(SOME_ASSET_ID, SOME_START_AGE, SOME_END_AGE);
+    JsonObject argument =
+        Json.createObjectBuilder()
+            .add(DeprecatedValidateLedger.ASSET_ID_KEY, SOME_ASSET_ID)
+            .add(DeprecatedValidateLedger.START_AGE_KEY, SOME_START_AGE)
+            .add(DeprecatedValidateLedger.END_AGE_KEY, SOME_END_AGE)
+            .build();
+    List<Asset> assets = createMockAssets(SOME_ASSET_ID, SOME_START_AGE, SOME_END_AGE);
     when(ledger.scan(any(AssetFilter.class))).thenReturn(assets);
 
     // Act
-    JsonNode result = validateLedger.invoke(ledger, argument, properties);
+    JsonObject result = validateLedger.invoke(ledger, argument, Optional.empty());
 
     // Assert
     AssetFilter expected =
@@ -102,9 +103,14 @@ public class ValidateLedgerTest {
             .withEndAge(SOME_END_AGE, true)
             .withAgeOrder(AgeOrder.ASC);
     verify(ledger).scan(expected);
-    assertThat(result.get(SOME_ASSET_ID).size()).isEqualTo(assets.size());
+    assertThat(result.getJsonArray(SOME_ASSET_ID).size()).isEqualTo(assets.size());
     for (int i = 0; i < assets.size(); i++) {
-      assertThat(result.get(SOME_ASSET_ID).get(i).get(ValidateLedger.AGE_KEY).asInt())
+      assertThat(
+              result
+                  .getJsonArray(SOME_ASSET_ID)
+                  .get(i)
+                  .asJsonObject()
+                  .getInt(DeprecatedValidateLedger.AGE_KEY))
           .isEqualTo(assets.get(i).age());
     }
   }
@@ -112,16 +118,16 @@ public class ValidateLedgerTest {
   @Test
   public void invoke_OnlyAssetIdGiven_ShouldReturnAllAssets() {
     // Arrange
-    JsonNode argument =
-        JsonNodeFactory.instance.objectNode().put(ValidateLedger.ASSET_ID_KEY, SOME_ASSET_ID);
-    JsonNode properties = JsonNodeFactory.instance.objectNode();
-
+    JsonObject argument =
+        Json.createObjectBuilder()
+            .add(DeprecatedValidateLedger.ASSET_ID_KEY, SOME_ASSET_ID)
+            .build();
     // create some asset but it's not used for verification since the range is open
-    List<Asset<JsonNode>> assets = createMockAssets(SOME_ASSET_ID, 0, 0);
+    List<Asset> assets = createMockAssets(SOME_ASSET_ID, 0, 0);
     when(ledger.scan(any(AssetFilter.class))).thenReturn(assets);
 
     // Act
-    validateLedger.invoke(ledger, argument, properties);
+    validateLedger.invoke(ledger, argument, Optional.empty());
 
     // Assert
     AssetFilter expected =
@@ -135,11 +141,12 @@ public class ValidateLedgerTest {
   @Test
   public void invoke_AssetIdNotGiven_ShouldThrowContractContextException() {
     // Arrange
-    JsonNode argument = JsonNodeFactory.instance.objectNode().put(ValidateLedger.AGE_KEY, SOME_AGE);
-    JsonNode properties = JsonNodeFactory.instance.objectNode();
+    JsonObject argument =
+        Json.createObjectBuilder().add(DeprecatedValidateLedger.AGE_KEY, SOME_AGE).build();
 
     // Act
-    Throwable thrown = catchThrowable(() -> validateLedger.invoke(ledger, argument, properties));
+    Throwable thrown =
+        catchThrowable(() -> validateLedger.invoke(ledger, argument, Optional.empty()));
 
     // Assert
     assertThat(thrown).isExactlyInstanceOf(ContractContextException.class);
