@@ -48,7 +48,7 @@ public class ValidateLedger extends JacksonBasedContract {
             .withAgeOrder(AgeOrder.ASC);
     List<Asset<JsonNode>> assets = ledger.scan(filter);
 
-    ObjectMapper mapper = new ObjectMapper();
+    ObjectMapper mapper = getObjectMapper();
     ArrayNode array = mapper.createArrayNode();
 
     assets.forEach(
