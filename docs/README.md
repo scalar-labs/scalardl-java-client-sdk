@@ -1,9 +1,3 @@
-> [!CAUTION]
-> 
-> The `docs` folder has been moved to the centralized documentation repository, [docs-internal](https://github.com/scalar-labs/docs-internal). Please update this documentation in that repository instead.
-> 
-> To view the ScalarDL documentation, visit [ScalarDL Documentation](https://scalardl.scalar-labs.com/docs/).
-
 ## ScalarDL Java Client SDK
 
 This is a client-side Java library to interact with [ScalarDL](https://github.com/scalar-labs/scalardl) network.
@@ -18,7 +12,8 @@ dependencies {
 ```
 
 ## Docs
-* [ScalarDL Docs](https://scalar-labs.github.io/scalardl/)
+* [ScalarDL Docs](https://scalardl.scalar-labs.com/)
+* [Javadoc](https://javadoc.io/doc/com.scalar-labs/scalardl-java-client-sdk/)
 
 ## Contributing 
 This library is mainly maintained by the Scalar Engineering Team, but of course we appreciate any help.
@@ -27,4 +22,5 @@ This library is mainly maintained by the Scalar Engineering Team, but of course 
 * For filing bugs, suggesting improvements, or requesting new features, help us out by opening an issue.
 
 ## License
-ScalarDL client SDK is dual-licensed under both the AGPL (found in the LICENSE file in the root directory) and a commercial license. You may select, at your option, one of the above-listed licenses. Regarding the commercial license, please [contact us](https://scalar-labs.com/contact_us/) for more information.
+
+ScalarDL Java Client SDK is dual-licensed under both the Apache 2.0 License (found in the LICENSE file in the root directory) and a commercial license. You may select, at your option, one of the licenses. The commercial license includes several enterprise-grade features such as ScalarDL Auditor. For more information about the commercial license, please [contact us](https://www.scalar-labs.com/contact).
