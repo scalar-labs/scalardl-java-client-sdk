@@ -1,5 +1,5 @@
-> [!IMPORTANT]
-> The contents of this repository have been moved to the ScalarDL core repository, [scalardl](https://github.com/scalar-labs/scalardl). To use ScalarDL Java Client SDK, see [ScalarDL Documentation](https://scalardl.scalar-labs.com/) and [Javadoc](https://javadoc.io/doc/com.scalar-labs/scalardl-java-client-sdk/).
+> [!WARNING]
+> This repository is deprecated and archived. Its contents have been moved to the ScalarDL core repository, [scalardl](https://github.com/scalar-labs/scalardl). To use ScalarDL Java Client SDK, see [ScalarDL Documentation](https://scalardl.scalar-labs.com/) and [Javadoc](https://javadoc.io/doc/com.scalar-labs/scalardl-java-client-sdk/).
 
 ## ScalarDL Java Client SDK
 
